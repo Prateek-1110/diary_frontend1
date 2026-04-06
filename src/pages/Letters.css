@@ -1,0 +1,190 @@
+.letters-page {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+/* Header */
+.letters-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.letters-header__eyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-style: italic;
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+  color: var(--muted);
+  margin: 0 0 6px;
+}
+
+.letters-header__title {
+  font-family: 'Lora', serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.letters-compose-btn {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent);
+  background: transparent;
+  border: 1.5px solid var(--accent);
+  border-radius: 6px;
+  padding: 8px 16px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.18s, color 0.18s;
+  flex-shrink: 0;
+}
+
+.letters-compose-btn:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+.letters-rule {
+  height: 1px;
+  background: var(--border);
+  margin-bottom: 32px;
+  opacity: 0.6;
+}
+
+/* Empty state */
+.letters-empty {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.letters-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 64px 0;
+  color: var(--muted);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  text-align: center;
+}
+
+.letters-empty-state__icon {
+  font-size: 28px;
+  opacity: 0.35;
+}
+
+/* Letter list */
+.letters-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Letter card */
+.letter-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+  animation: letterFadeIn 0.35s ease both;
+}
+
+@keyframes letterFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.letter-card--unlocked {
+  cursor: pointer;
+}
+
+.letter-card--unlocked:hover .letter-card__subject {
+  color: var(--accent);
+}
+
+.letter-card--locked {
+  cursor: default;
+}
+
+.letter-card__seal {
+  font-size: 20px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+  color: var(--muted);
+  font-family: serif;
+  transition: color 0.2s;
+}
+
+.letter-card--unlocked .letter-card__seal {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.letter-card__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.letter-card__subject {
+  display: block;
+  font-family: 'Lora', serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.15s;
+}
+
+.letter-card__date {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.letter-card__status {
+  flex-shrink: 0;
+}
+
+.letter-card__countdown {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.letter-card__lock-icon {
+  font-size: 11px;
+}
+
+.letter-card__open-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.01em;
+}

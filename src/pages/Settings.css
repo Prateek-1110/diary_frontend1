@@ -1,0 +1,238 @@
+.settings-root {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+}
+
+/* ── Header ── */
+.settings-header {
+  margin-bottom: 2.5rem;
+}
+
+.settings-title {
+  font-family: 'Lora', serif;
+  font-size: 1.9rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 0.3rem;
+  letter-spacing: -0.01em;
+}
+
+.settings-sub {
+  font-size: 0.875rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* ── Body ── */
+.settings-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.settings-section {
+  padding: 1.6rem 0;
+}
+
+.settings-section-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.settings-divider {
+  height: 1px;
+  background: var(--border);
+  opacity: 0.6;
+}
+
+/* ── Name input ── */
+.settings-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.72rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.18s, box-shadow 0.18s;
+}
+
+.settings-input::placeholder { color: var(--muted); }
+
+.settings-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb, 180,140,110), 0.1);
+}
+
+/* ── Theme swatches ── */
+.settings-theme-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+
+.settings-theme-swatch {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 0.5rem 0.75rem;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  background: var(--swatch-bg, #fdf8f4);
+  cursor: pointer;
+  transition: border-color 0.18s, box-shadow 0.18s, transform 0.14s;
+}
+
+.settings-theme-swatch:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+}
+
+.settings-theme-swatch.active {
+  border-color: var(--swatch-accent);
+  box-shadow: 0 0 0 2px var(--swatch-accent);
+}
+
+.swatch-preview {
+  width: 40px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--swatch-surface);
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.swatch-bar {
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  right: 7px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--swatch-accent);
+  opacity: 0.7;
+}
+
+.swatch-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--swatch-accent);
+  margin-left: auto;
+}
+
+.swatch-name {
+  font-size: 0.72rem;
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+.swatch-check {
+  position: absolute;
+  top: 5px;
+  right: 7px;
+  font-size: 0.65rem;
+  color: var(--swatch-accent);
+  font-weight: 700;
+}
+
+/* ── Font picker ── */
+.settings-font-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.settings-font-row {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  cursor: pointer;
+  transition: border-color 0.16s, background 0.16s;
+  text-align: left;
+  position: relative;
+}
+
+.settings-font-row:hover {
+  background: var(--bg);
+}
+
+.settings-font-row.active {
+  border-color: var(--accent);
+  background: var(--bg);
+}
+
+.font-sample {
+  font-size: 1rem;
+  color: var(--text);
+  min-width: 150px;
+}
+
+.font-pangram {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.font-check {
+  margin-left: auto;
+  font-size: 0.8rem;
+  color: var(--accent);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+}
+
+/* ── Actions ── */
+.settings-actions {
+  padding-top: 1.6rem;
+}
+
+.settings-save-btn {
+  padding: 0.78rem 2rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.18s, transform 0.12s, box-shadow 0.18s;
+  letter-spacing: 0.01em;
+}
+
+.settings-save-btn:hover {
+  background: var(--accent-dark, #9e7a5e);
+  box-shadow: 0 4px 16px rgba(180, 140, 110, 0.22);
+  transform: translateY(-1px);
+}
+
+.settings-save-btn.saved {
+  background: #5a9e7c;
+}
+
+@media (max-width: 480px) {
+  .settings-theme-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

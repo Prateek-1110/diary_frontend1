@@ -1,0 +1,173 @@
+.letter-detail-page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+.letter-detail-loading {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Back nav */
+.letter-detail-back {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: var(--muted);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  margin-bottom: 32px;
+  display: inline-block;
+  transition: color 0.15s;
+}
+
+.letter-detail-back:hover {
+  color: var(--text);
+}
+
+/* Header */
+.letter-detail-eyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-style: italic;
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+  color: var(--muted);
+  margin: 0 0 6px;
+}
+
+.letter-detail-title {
+  font-family: 'Lora', serif;
+  font-size: 1.85rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 8px;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.letter-detail-meta {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0 0 24px;
+}
+
+.letter-detail-rule {
+  height: 1px;
+  background: var(--border);
+  margin-bottom: 36px;
+  opacity: 0.6;
+}
+
+/* Sealed state */
+.letter-detail-sealed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 56px 24px;
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  animation: sealedFade 0.4s ease;
+}
+
+@keyframes sealedFade {
+  from { opacity: 0; transform: scale(0.98); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.letter-detail-wax {
+  font-size: 32px;
+  color: var(--muted);
+  margin-bottom: 16px;
+  opacity: 0.4;
+}
+
+.letter-detail-sealed-msg {
+  font-family: 'Lora', serif;
+  font-size: 16px;
+  color: var(--text);
+  margin: 0 0 8px;
+  font-style: italic;
+}
+
+.letter-detail-sealed-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* Letter body */
+.letter-detail-body {
+  font-family: 'Lora', serif;
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--text);
+  animation: bodyReveal 0.5s ease;
+}
+
+@keyframes bodyReveal {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.letter-detail-body p {
+  margin: 0 0 1.2em;
+}
+
+.letter-detail-body h1,
+.letter-detail-body h2,
+.letter-detail-body h3 {
+  font-family: 'Lora', serif;
+  font-weight: 600;
+  color: var(--text);
+  margin: 1.5em 0 0.5em;
+}
+
+.letter-detail-body strong {
+  font-weight: 600;
+}
+
+.letter-detail-body em {
+  font-style: italic;
+}
+
+.letter-detail-body ul,
+.letter-detail-body ol {
+  padding-left: 1.4em;
+  margin: 0 0 1em;
+}
+
+.letter-detail-body li {
+  margin-bottom: 0.3em;
+}
+
+/* Footer */
+.letter-detail-footer {
+  margin-top: 52px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+.letter-detail-delete {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.15s;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.letter-detail-delete:hover {
+  color: #b94040;
+}

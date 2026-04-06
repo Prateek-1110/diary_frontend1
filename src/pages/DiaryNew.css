@@ -1,0 +1,113 @@
+.diary-new-page {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+  animation: diaryNewFadeIn 0.35s ease both;
+}
+
+@keyframes diaryNewFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Back button ──────────────────────────────── */
+.diary-new-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--app-font, 'DM Sans', sans-serif);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+  padding: 0;
+  margin-bottom: 2rem;
+  transition: color 0.2s;
+}
+
+.diary-new-back:hover {
+  color: var(--text);
+}
+
+.diary-new-back svg {
+  flex-shrink: 0;
+}
+
+/* ── Title block ──────────────────────────────── */
+.diary-new-header {
+  margin-bottom: 2.25rem;
+}
+
+.diary-new-title-block {
+  border-left: 2.5px solid var(--accent);
+  padding-left: 1rem;
+}
+
+.diary-new-eyebrow {
+  font-family: var(--app-font, 'DM Sans', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.35rem;
+}
+
+.diary-new-title {
+  font-family: 'Lora', Georgia, serif;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 600;
+  font-style: italic;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.25;
+}
+
+/* ── Editor wrapper ───────────────────────────── */
+.diary-new-editor-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  transition: box-shadow 0.2s;
+}
+
+.diary-new-editor-wrap:focus-within {
+  box-shadow: 0 0 0 2px var(--accent, #a8c5b0), 0 1px 6px rgba(0,0,0,0.06);
+}
+
+/* ── Saving indicator ─────────────────────────── */
+.diary-new-saving {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.25rem;
+  padding-left: 0.25rem;
+}
+
+.diary-new-saving-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: diaryNewPulse 1.1s ease-in-out infinite;
+}
+
+.diary-new-saving-dot:nth-child(2) { animation-delay: 0.18s; }
+.diary-new-saving-dot:nth-child(3) { animation-delay: 0.36s; }
+
+@keyframes diaryNewPulse {
+  0%, 80%, 100% { opacity: 0.25; transform: scale(0.85); }
+  40%            { opacity: 1;    transform: scale(1); }
+}
+
+.diary-new-saving-label {
+  font-family: var(--app-font, 'DM Sans', sans-serif);
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-left: 0.15rem;
+}
