@@ -2,7 +2,7 @@ import axios from 'axios'
 import useAuthStore from '../store/authStore'
 
 const client = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL,
+  baseURL: import.meta.env.VITE_API_URL,
   withCredentials: true,  // needed for HttpOnly refresh cookie
 })
 
