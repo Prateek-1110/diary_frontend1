@@ -9,7 +9,6 @@ const NAV = [
   { to: '/',          label: 'Home',     icon: HomeIcon },
   { to: '/diary',     label: 'Diary',    icon: DiaryIcon },
   { to: '/letters',   label: 'Letters',  icon: LettersIcon },
-  { to: '/vault',     label: 'Vault',    icon: VaultIcon },
   { to: '/checkin',   label: 'Mood',     icon: MoodIcon },
   { to: '/timeline',  label: 'Timeline', icon: TimelineIcon },
 ]
@@ -42,7 +41,7 @@ export default function Layout({ children }) {
         <div className="sidebar-top">
           <div className="sidebar-brand">
             <span className="brand-dot" />
-            <span className="brand-name">ours</span>
+            <span className="brand-name">Ours</span>
           </div>
 
           <nav className="sidebar-nav">

@@ -8,7 +8,6 @@ import DiaryDetail from './pages/DiaryDetail'
 import Letters from './pages/Letters'
 import LetterNew from './pages/LetterNew'
 import LetterDetail from './pages/LetterDetail'
-import Vault from './pages/Vault'
 import Checkin from './pages/Checkin'
 import Timeline from './pages/Timeline'
 import Settings from './pages/Settings'
@@ -25,7 +24,6 @@ const router = createBrowserRouter([
   { path: '/letters',      element: protect(<Letters />) },
   { path: '/letters/new',  element: protect(<LetterNew />) },
   { path: '/letters/:id',  element: protect(<LetterDetail />) },
-  { path: '/vault',        element: protect(<Vault />) },
   { path: '/checkin',      element: protect(<Checkin />) },
   { path: '/timeline',     element: protect(<Timeline />) },
   { path: '/settings',     element: protect(<Settings />) },

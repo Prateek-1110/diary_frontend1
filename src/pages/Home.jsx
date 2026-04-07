@@ -41,7 +41,6 @@ export default function Home() {
   const QUICK = [
     { label: 'New diary entry', sub: 'Write something today', to: '/diary/new', accent: true },
     { label: 'Letters',         sub: 'Time-locked messages',  to: '/letters' },
-    { label: 'Vault',           sub: 'Photos & voice notes',  to: '/vault' },
     { label: 'Check in',        sub: 'How are you feeling?',  to: '/checkin' },
     { label: 'Timeline',        sub: 'Your story so far',     to: '/timeline' },
   ]
