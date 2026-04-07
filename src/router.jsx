@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom'
 import Login from './pages/Login'
+import Explore from './pages/Explore'        // ← add
 import Home from './pages/Home'
 import ProtectedRoute from './components/ProtectedRoute'
 import Diary from './pages/Diary'
@@ -12,13 +13,13 @@ import Checkin from './pages/Checkin'
 import Timeline from './pages/Timeline'
 import Settings from './pages/Settings'
 import Hidden from './pages/Hidden'
-import Explore from './pages/Explore'
+
 const protect = (element) => <ProtectedRoute>{element}</ProtectedRoute>
 
 const router = createBrowserRouter([
+  { path: '/',             element: <Explore /> },          // ← public landing
   { path: '/login',        element: <Login /> },
-  { path: '/',             element: protect(<Home />) },
-  { path: '/explore', element: <Explore /> },
+  { path: '/home',         element: protect(<Home />) },    // ← diary home moved here
   { path: '/diary',        element: protect(<Diary />) },
   { path: '/diary/new',    element: protect(<DiaryNew />) },
   { path: '/diary/:id',    element: protect(<DiaryDetail />) },

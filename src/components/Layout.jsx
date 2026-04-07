@@ -6,7 +6,7 @@ import { usePresence } from '../hooks/usePresence'
 import './Layout.css'
 
 const NAV = [
-  { to: '/',          label: 'Home',     icon: HomeIcon },
+  { to: '/home',          label: 'Home',     icon: HomeIcon },
   { to: '/diary',     label: 'Diary',    icon: DiaryIcon },
   { to: '/letters',   label: 'Letters',  icon: LettersIcon },
   { to: '/checkin',   label: 'Mood',     icon: MoodIcon },

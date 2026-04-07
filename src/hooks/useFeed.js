@@ -1,10 +1,5 @@
 import { useState, useCallback } from 'react'
 
-// const fetchQuote = async () => {
-//   const res = await fetch('https://zenquotes.io/api/random')
-//   const data = await res.json()
-//   return { type: 'quote', text: data[0].q, author: data[0].a }
-// }
 const fetchQuote = async () => {
   const res = await fetch('https://api.quotable.io/random')
   const data = await res.json()

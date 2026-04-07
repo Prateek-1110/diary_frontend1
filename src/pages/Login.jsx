@@ -32,7 +32,7 @@ export default function Login() {
       setWarming(false);
       setLoading(false);
      setAuth(res.data.user ?? { username }, res.data.access);            // ← store the JWT
-      navigate("/");
+      navigate("/home");
     } catch (err) {
       clearTimeout(warmupTimer);
       setWarming(false);

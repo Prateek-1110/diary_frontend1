@@ -1,7 +1,8 @@
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useFeed } from '../hooks/useFeed'
 import FeedCard from '../components/FeedCard'
+import useAuthStore from '../store/authStore'   // ← add
 import './Explore.css'
 
 export default function Explore() {
@@ -9,14 +10,13 @@ export default function Explore() {
   const { items, loading, fetchMore, reset } = useFeed(mode)
   const sentinelRef = useRef(null)
   const navigate = useNavigate()
+  const { isAuthenticated } = useAuthStore()   // ← add
 
-  // load initial batch
   useEffect(() => {
     reset()
     fetchMore()
   }, [mode])
 
-  // IntersectionObserver — fires fetchMore when sentinel scrolls into view
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => { if (entries[0].isIntersecting) fetchMore() },
@@ -30,6 +30,10 @@ export default function Explore() {
     if (m === mode) return
     reset()
     setMode(m)
+  }
+
+  const handleDiaryClick = () => {
+    navigate(isAuthenticated ? '/home' : '/login')   // ← smart redirect
   }
 
   return (
@@ -53,16 +57,13 @@ export default function Explore() {
         {items.map((item, i) => (
           <FeedCard key={i} item={item} />
         ))}
-
-        {/* sentinel div — when visible, triggers fetchMore */}
         <div ref={sentinelRef} className="explore-sentinel">
           {loading && <div className="explore-spinner" />}
         </div>
       </div>
 
-      {/* fixed diary button */}
-      <button className="explore-diary-btn" onClick={() => navigate('/')}>
-        open my diary →
+      <button className="explore-diary-btn" onClick={handleDiaryClick}>
+        {isAuthenticated ? 'open my diary →' : 'sign in to diary →'}
       </button>
     </div>
   )
