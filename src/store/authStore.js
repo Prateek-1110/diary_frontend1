@@ -1,14 +1,22 @@
-import { create } from 'zustand'
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
-const useAuthStore = create((set) => ({
-  accessToken: null,
-  user: null,
-  isInitialized: false,   // ← new flag
+const useAuthStore = create(
+  persist(
+    (set) => ({
+      user: null,
+      isAuthenticated: false,
+      setAuth: (user) => set({ user, isAuthenticated: true }),
+      clearAuth: () => set({ user: null, isAuthenticated: false }),
+    }),
+    {
+      name: "diary-auth",          // key in localStorage
+      partialize: (state) => ({    // only persist these fields
+        user: state.user,
+        isAuthenticated: state.isAuthenticated,
+      }),
+    }
+  )
+);
 
-  setTokens: (accessToken, user) => set({ accessToken, user }),
-  setAccessToken: (accessToken) => set({ accessToken }),
-  clearAuth: () => set({ accessToken: null, user: null }),
-  setInitialized: () => set({ isInitialized: true }),  // ← new action
-}))
-
-export default useAuthStore
+export default useAuthStore;

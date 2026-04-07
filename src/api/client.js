@@ -3,7 +3,7 @@ import useAuthStore from '../store/authStore'
 
 const client = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
-  withCredentials: true,  // needed for HttpOnly refresh cookie
+  withCredentials: true,
 })
 
 // Inject access token into every request
@@ -15,17 +15,13 @@ client.interceptors.request.use((config) => {
   return config
 })
 
-// On 401: try silent refresh, then retry once
 let isRefreshing = false
 let failedQueue = []
 
 const processQueue = (error, token = null) => {
   failedQueue.forEach((prom) => {
-    if (error) {
-      prom.reject(error)
-    } else {
-      prom.resolve(token)
-    }
+    if (error) prom.reject(error)
+    else prom.resolve(token)
   })
   failedQueue = []
 }
@@ -49,11 +45,8 @@ client.interceptors.response.use(
       isRefreshing = true
 
       try {
-        const res = await axios.post(
-            `${import.meta.env.VITE_API_BASE_URL}/api/auth/token/refresh/`,
-          {},
-          { withCredentials: true }
-        )
+        const res = await client.post('/api/auth/token/refresh/')
+        // ↑ use client (not raw axios) so baseURL + withCredentials are inherited
         const newToken = res.data.access
         useAuthStore.getState().setAccessToken(newToken)
         processQueue(null, newToken)

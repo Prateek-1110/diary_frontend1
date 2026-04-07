@@ -1,39 +1,49 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
-import useAuthStore from '../store/authStore'
-import './Login.css'
+import { useState } from "react";
+import axios from "axios";
+import ServerWarmupDialog from "../components/ServerWarmupDialog";
+import useAuthStore from "../store/authStore";
 
 export default function Login() {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false)
-  const { setTokens } = useAuthStore()
-  const navigate = useNavigate()
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError]       = useState("");
+  const [warming, setWarming]   = useState(false);
+  const { setAuth } = useAuthStore();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    setLoading(true)
-    setError('')
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setError("");
+
+    // Show warmup dialog after 3s of waiting
+    const warmupTimer = setTimeout(() => setWarming(true), 3000);
 
     try {
-     const res = await axios.post(
-  `${import.meta.env.VITE_API_URL}/api/auth/login/`,
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_BASE_URL}/api/auth/login/`,
         { username, password },
         { withCredentials: true }
-      )
-      setTokens(res.data.access, res.data.user)
-      navigate('/')
+      );
+      clearTimeout(warmupTimer);
+      setWarming(false);
+      setAuth(res.data.user ?? { username });
+      // navigate to home
     } catch (err) {
-      setError('Invalid username or password.')
-    } finally {
-      setLoading(false)
+      clearTimeout(warmupTimer);
+      setWarming(false);
+      // "invalid credentials" during cold start = network timeout, not bad password
+      if (!err.response) {
+        setError("Server took too long to respond. Please try again.");
+      } else {
+        setError("Invalid username or password.");
+      }
     }
-  }
+  };
 
   return (
-    <div className="login-root">
+    <>
+      <ServerWarmupDialog visible={warming} />
+      {
+        <div className="login-root">
       <div className="login-left">
         <div className="login-brand">ours</div>
         <p className="login-tagline">your little world,<br />together.</p>
@@ -76,5 +86,7 @@ export default function Login() {
         </form>
       </div>
     </div>
-  )
+      }
+    </>
+  );
 }
