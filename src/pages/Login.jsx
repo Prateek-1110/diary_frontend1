@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import ServerWarmupDialog from "../components/ServerWarmupDialog";
 import useAuthStore from "../store/authStore";
+import "./Login.css";   // ← add this
 
 export default function Login() {
   const [username, setUsername] = useState("");
