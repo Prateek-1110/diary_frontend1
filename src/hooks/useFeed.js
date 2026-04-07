@@ -1,9 +1,9 @@
 import { useState, useCallback } from 'react'
 
 const fetchQuote = async () => {
-  const res = await fetch('https://api.quotable.io/random')
+  const res = await fetch('https://dummyjson.com/quotes/random')
   const data = await res.json()
-  return { type: 'quote', text: data.content, author: data.author }
+  return { type: 'quote', text: data.quote, author: data.author }
 }
 
 const fetchJoke = async () => {
