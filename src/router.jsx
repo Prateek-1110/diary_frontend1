@@ -12,12 +12,13 @@ import Checkin from './pages/Checkin'
 import Timeline from './pages/Timeline'
 import Settings from './pages/Settings'
 import Hidden from './pages/Hidden'
-
+import Explore from './pages/Explore'
 const protect = (element) => <ProtectedRoute>{element}</ProtectedRoute>
 
 const router = createBrowserRouter([
   { path: '/login',        element: <Login /> },
   { path: '/',             element: protect(<Home />) },
+  { path: '/explore', element: <Explore /> },
   { path: '/diary',        element: protect(<Diary />) },
   { path: '/diary/new',    element: protect(<DiaryNew />) },
   { path: '/diary/:id',    element: protect(<DiaryDetail />) },
