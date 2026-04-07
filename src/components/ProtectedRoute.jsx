@@ -10,7 +10,7 @@ export default function ProtectedRoute({ children }) {
     if (isInitialized) return
 
     axios.post(
-      `${import.meta.env.VITE_API_BASE_URL}/api/auth/token/refresh/`,
+      `${import.meta.env.VITE_API_URL}/api/auth/token/refresh/`,  // ← VITE_API_URL
       {},
       { withCredentials: true }
     )
@@ -19,7 +19,7 @@ export default function ProtectedRoute({ children }) {
       .finally(() => setInitialized())
   }, [])
 
-  if (!isInitialized) return null
+  if (!isInitialized) return null          // waiting for refresh check
   if (!accessToken) return <Navigate to="/login" replace />
   return children
 }

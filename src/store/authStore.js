@@ -4,15 +4,14 @@ import { persist } from "zustand/middleware";
 const useAuthStore = create(
   persist(
     (set) => ({
-      // persisted
       user: null,
       isAuthenticated: false,
-
-      // in-memory only (not in partialize)
       accessToken: null,
+      isInitialized: false,          // ← added
 
       setAuth: (user, accessToken) => set({ user, isAuthenticated: true, accessToken }),
       setAccessToken: (accessToken) => set({ accessToken }),
+      setInitialized: () => set({ isInitialized: true }),   // ← added
       clearAuth: () => set({ user: null, isAuthenticated: false, accessToken: null }),
     }),
     {
@@ -20,7 +19,7 @@ const useAuthStore = create(
       partialize: (state) => ({
         user: state.user,
         isAuthenticated: state.isAuthenticated,
-        // accessToken intentionally excluded
+        // accessToken and isInitialized intentionally excluded
       }),
     }
   )
